@@ -10,6 +10,9 @@ dive's last frame and its last frame IS the next dive's first frame, which is
 the skill's frame-identical seam rule (SKILL.md Step 5) without paid models.
 
 usage: python3 render_world.py <img_dir> <logo_src> <menu_src> <font.ttf> <out_dir>
+
+The homepage hero (assets/video/hero.mp4) is dive_0 + conn_0 + dive_1 joined
+with ffmpeg, dropping the duplicated first frame of each later clip.
 """
 import math, os, subprocess, sys, random
 from PIL import Image, ImageDraw, ImageFilter, ImageFont

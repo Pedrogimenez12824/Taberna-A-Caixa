@@ -59,24 +59,84 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing:
 .btn-ghost:hover { background: var(--text); color: var(--bg); }
 .btn-sm { min-height: 40px; padding: 0 1rem; font-size: .9rem; }
 
-/* ---------- MUNDO (motor scroll-world, ajustes de marca) ---------- */
-/* El motor declara sus colores en .sw-root; el id gana y le pasa los de la taberna */
-#world {
-  --sw-bg: var(--bg); --sw-ink: var(--text); --sw-ink-soft: var(--muted); --sw-accent: var(--red);
-  --sw-font-display: var(--font-display); --sw-font-body: var(--font-body);
+/* Navegación */
+.nav {
+  position: fixed; inset: 0 0 auto; z-index: 50; height: calc(68px + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px);
+  display: flex; align-items: center; gap: 2rem; padding-inline: var(--gutter);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
 }
-.sw-root .sw-brand__mark { width: 34px; height: 34px; border-radius: 50%; background: url("assets/img/logo.png") center / cover; box-shadow: none; }
-.sw-root .sw-brand__name { font-family: var(--font-type); font-weight: 400; color: var(--cream); }
-.sw-root .sw-nav { background: rgb(35 36 39 / .7); border-color: var(--rule); }
-.sw-root .sw-nav__item.is-active { color: var(--red-ink); background: var(--red); }
-.sw-root .sw-topcta, .sw-root .sw-btn--primary { color: var(--red-ink); background: var(--red); border-radius: var(--radius); }
-.sw-root .sw-btn--ghost { border-radius: var(--radius); }
-.sw-root .sw-copy__eyebrow { font-family: var(--font-type); font-weight: 400; letter-spacing: .04em; text-transform: none; font-size: 1.05rem; color: #e0675b; }
-.sw-root .sw-copy__title { font-weight: 400; text-wrap: balance; }
-.sw-root .sw-copy__tags li { color: var(--cream); background: rgb(226 212 180 / .1); border-color: var(--rule); border-radius: var(--radius); }
+.nav-brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; font-family: var(--font-type); font-size: 1.15rem; color: var(--cream); }
+.nav-brand img { border-radius: 50%; }
+.nav-links { display: flex; gap: 1.6rem; margin-left: auto; }
+.nav-links a { text-decoration: none; font-weight: 500; }
+.nav-links a:hover { color: var(--red); }
+@media (max-width: 720px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
 
-/* Lo que va después del vuelo sube por encima del último plano */
-.after-world, .footer { position: relative; z-index: 45; background: var(--bg); box-shadow: 0 -40px 80px rgb(0 0 0 / .5); }
+/* ---------- PORTADA: vuelo con scroll ---------- */
+.flight { position: relative; height: 100dvh; min-height: 32rem; overflow: hidden; background: var(--bg); }
+.flight-media, .flight-poster, .flight-video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.flight-poster, .flight-video { object-fit: cover; object-position: 50% 50%; }
+.flight-video { opacity: 0; transition: opacity .3s; }
+.flight.has-video .flight-video { opacity: 1; }
+/* Velo a la izquierda para que el texto se lea sobre el vídeo */
+.flight-media { --shade: 1; }
+.flight-media::after { content: ""; position: absolute; inset: 0; opacity: var(--shade); background: linear-gradient(90deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 60%, transparent) 18%, transparent 45%); }
+/* En ordenador el vídeo empieza a la derecha del título y se abre al hacer scroll */
+@media (min-width: 861px) { .flight-media { left: 30vw; width: auto; } }
+.flight-copy { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 88px var(--gutter) 40px; max-width: 40rem; }
+.flight h1 { font-size: clamp(3rem, 7.4vw, 6.4rem); line-height: .94; text-transform: uppercase; text-wrap: balance; }
+.flight-copy p { font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--muted); max-width: 30ch; margin: 1.2rem 0 1.8rem; }
+.flight-ctas { display: flex; gap: .8rem; flex-wrap: wrap; }
+.flight-end {
+  position: absolute; inset: 0; z-index: 3; margin: 0; pointer-events: none;
+  display: grid; place-items: center; text-align: center; padding: 0 var(--gutter);
+  font: 400 clamp(2.2rem, 6vw, 5rem)/1.05 var(--font-display); color: var(--red-ink);
+  text-shadow: 0 2px 30px rgb(0 0 0 / .6); opacity: 0;
+}
+@media (max-width: 860px) {
+  .flight-media::after { background: linear-gradient(0deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 75%, transparent) 42%, transparent 75%); }
+  .flight-copy { justify-content: flex-end; padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px)); }
+  .flight-poster, .flight-video { object-position: 50% 40%; }
+}
+
+/* ---------- MANIFIESTO ---------- */
+.manifesto { padding: clamp(6rem, 18vh, 12rem) var(--gutter); }
+.reveal-words {
+  max-width: 24ch; margin: 0;
+  font: 400 clamp(1.8rem, 4.4vw, 3.8rem)/1.12 var(--font-display);
+}
+.reveal-words .w { opacity: .14; transition: opacity .1s linear; }
+
+/* ---------- RINCONES ---------- */
+.rooms { position: relative; overflow: hidden; }
+.rooms-track {
+  display: flex; align-items: center; gap: clamp(2rem, 5vw, 5rem);
+  min-height: 100dvh; padding: 88px var(--gutter) 40px; width: max-content;
+}
+.rooms-intro { width: min(26rem, 80vw); flex: none; }
+.rooms-intro h2 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1; }
+.rooms-intro p { color: var(--muted); max-width: 30ch; }
+.frame {
+  flex: none; margin: 0; padding: 12px 12px 0; background: var(--cream);
+  box-shadow: 0 18px 40px -18px rgb(30 25 15 / .45);
+  width: clamp(220px, 24vw, 330px);
+}
+.frame:nth-of-type(odd) { transform: rotate(-2deg); }
+.frame:nth-of-type(even) { transform: rotate(1.6deg) translateY(4vh); }
+.frame img { width: 100%; height: auto; aspect-ratio: auto; filter: saturate(.92); }
+.frame figcaption { font-family: var(--font-type); color: var(--ink-line); padding: .7rem .2rem .9rem; font-size: 1.05rem; }
+
+/* ---------- RECOMENDADOS ---------- */
+.picks { padding: clamp(5rem, 14vh, 9rem) var(--gutter); max-width: 1400px; margin: 0 auto; overflow: hidden; }
+.picks-title { font-size: clamp(1.6rem, 3vw, 2.4rem); margin-bottom: clamp(2rem, 5vh, 3.5rem); color: var(--muted); font-family: var(--font-type); font-weight: 400; }
+.picks-list { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(1.4rem, 3vh, 2.2rem); }
+.pick { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name price" "note price"; column-gap: 1.5rem; align-items: end; padding-bottom: clamp(1.2rem, 3vh, 2rem); border-bottom: 1px solid var(--rule); }
+.pick:nth-child(even) { padding-left: clamp(0rem, 10vw, 10rem); }
+.pick-name { grid-area: name; font: 400 clamp(1.8rem, 5vw, 4.2rem)/1 var(--font-display); text-wrap: balance; }
+.pick-note { grid-area: note; color: var(--muted); margin-top: .5rem; }
+.pick-price { grid-area: price; font: 400 clamp(1.3rem, 2.6vw, 2.2rem)/1 var(--font-type); color: #e0675b; transform: rotate(-4deg); }
 
 /* ---------- CARTA ---------- */
 .menu {
@@ -152,9 +212,10 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing:
 /* Sin animaciones si el usuario lo pide */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .reveal-words .w { opacity: 1; }
+  .rooms { overflow-x: auto; scroll-snap-type: x mandatory; }
+  .frame { scroll-snap-align: center; }
   .js .menu-group:not(.in) { opacity: 1; transform: none; }
 }
 
-/* Índice lateral del vuelo y aviso inicial en colores de la casa */
-.sw-root .sw-route__label { background: var(--cream); color: var(--ink-line); border-radius: var(--radius); }
-@media (max-width: 860px) { .sw-root .sw-hint { display: none; } }
+

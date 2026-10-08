@@ -14,10 +14,69 @@
 <body>
   <div class="grain" aria-hidden="true"></div>
 
-  <div id="top"></div>
-  <div id="world"></div>
+  <header class="nav">
+    <a class="nav-brand" href="#top" aria-label="Taberna A Caixa, inicio">
+      <img src="assets/img/logo.png" alt="" width="36" height="36">
+      <span>A Caixa</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#rincones">Rincones</a>
+      <a href="#carta">Carta</a>
+      <a href="#visitanos">Visítanos</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#visitanos">Reservar mesa</a>
+  </header>
 
-  <main class="after-world">
+  <main id="top">
+    <!-- PORTADA: vuelo corto con scroll (técnica de la skill scroll-world) -->
+    <section class="flight" aria-label="Portada">
+      <div class="flight-media" aria-hidden="true">
+        <img class="flight-poster" src="assets/video/hero-poster.webp" alt="">
+        <video class="flight-video" muted playsinline preload="none"></video>
+      </div>
+      <div class="flight-copy">
+        <h1>Taberna<br>A Caixa</h1>
+        <p>Cocina casera para compartir, terraza de piedra y sobremesas largas.</p>
+        <div class="flight-ctas">
+          <a class="btn btn-primary" href="#visitanos">Reservar mesa</a>
+          <a class="btn btn-ghost" href="#carta">Ver la carta</a>
+        </div>
+      </div>
+      <p class="flight-end" aria-hidden="true">Pasa, está abierta.</p>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="manifesto" aria-label="Quiénes somos">
+      <p class="reveal-words">Una casa de piedra con terraza, una barra de las de siempre y una cocina que no tiene prisa. Aquí se viene a compartir platos, a pedir otra ronda y a quedarse un rato más.</p>
+    </section>
+
+    <!-- RINCONES: galería que pasa de lado -->
+    <section class="rooms" id="rincones" aria-label="Rincones">
+      <div class="rooms-track">
+        <div class="rooms-intro">
+          <h2>Cada rincón,<br>su mesa.</h2>
+          <p>Elige dónde sentarte: al sol, junto a la ventana o en el sofá del fondo.</p>
+        </div>
+        <figure class="frame"><img src="assets/img/terraza.jpg" alt="Fachada de piedra de la taberna con la terraza y sombrillas" width="552" height="690" loading="lazy"><figcaption>La terraza</figcaption></figure>
+        <figure class="frame"><img src="assets/img/comedor.jpg" alt="Comedor con barra de madera, reloj de pared y mesas" width="831" height="624" loading="lazy"><figcaption>El comedor</figcaption></figure>
+        <figure class="frame"><img src="assets/img/ventana.jpg" alt="Mesa de azulejo junto a una ventana con cortinas" width="552" height="552" loading="lazy"><figcaption>Junto a la ventana</figcaption></figure>
+        <figure class="frame"><img src="assets/img/cojines.jpg" alt="Banco corrido con cojines y lámpara de mimbre" width="498" height="624" loading="lazy"><figcaption>El banco de los cojines</figcaption></figure>
+        <figure class="frame"><img src="assets/img/rincon.jpg" alt="Rincón con sillones blancos y plantas colgantes" width="552" height="552" loading="lazy"><figcaption>El rincón verde</figcaption></figure>
+        <figure class="frame"><img src="assets/img/bici.jpg" alt="Bicicleta decorativa con el cartel A Caixa y una lámpara" width="552" height="921" loading="lazy"><figcaption>La bici de la entrada</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- RECOMENDADOS -->
+    <section class="picks" aria-label="Recomendados">
+      <h2 class="picks-title">Si es tu primera vez, pide esto.</h2>
+      <ol class="picks-list">
+        <li class="pick"><span class="pick-name">Pulpo a la plancha</span><span class="pick-note">Sobre crema de patata</span><span class="pick-price">23 €</span></li>
+        <li class="pick"><span class="pick-name">Huevos para romper con pulpo</span><span class="pick-note">Para compartir al centro</span><span class="pick-price">24,5 €</span></li>
+        <li class="pick"><span class="pick-name">Croquetas de jamón ibérico</span><span class="pick-note">Siete por ración</span><span class="pick-price">11,5 €</span></li>
+        <li class="pick"><span class="pick-name">Tortilla de calamar en su tinta</span><span class="pick-note">Con alioli</span><span class="pick-price">16 €</span></li>
+      </ol>
+    </section>
+
     <!-- CARTA: título fijo a la izquierda, platos a la derecha -->
     <section class="menu" id="carta" aria-label="Carta">
       <div class="menu-side">
@@ -120,7 +179,7 @@
         <dl class="visit-data">
           <div><dt>Horario</dt><dd>Martes a domingo<br>13:00 a 16:00 y 20:00 a 00:00<br>Lunes cerrado</dd></div>
           <div><dt>Dónde</dt><dd>Rúa da Pedra, 12<br>Galicia</dd></div>
-          <div><dt>Teléfono</dt><dd><a href="tel:+34986000000">986 000 000</a></dd></div>
+          <div><dt>Teléfono</dt><dd>986 000 000</dd></div>
         </dl>
         <a class="btn btn-primary" href="tel:+34986000000">Llamar para reservar</a>
       </div>
@@ -133,7 +192,8 @@
     <p class="footer-note">Web de prueba. Dirección, teléfono y horario son de ejemplo.</p>
   </footer>
 
-  <script src="assets/scroll-world.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
