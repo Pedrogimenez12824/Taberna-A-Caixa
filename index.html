@@ -219,14 +219,19 @@
       <div class="visit-card">
         <h2>Te guardamos mesa.</h2>
         <dl class="visit-data">
-          <div><dt>Horario</dt><dd><ul class="hours">
-            <li><span>Lunes, miércoles y jueves</span><span>10:00 a 16:00</span></li>
-            <li><span>Viernes</span><span>10:00 a 16:00 y 20:00 a 00:00</span></li>
-            <li><span>Sábado</span><span>12:00 a 16:00 y 20:00 a 01:00</span></li>
-            <li><span>Domingo</span><span>12:00 a 16:00 y 20:00 a 00:00</span></li>
-            <li><span>Martes</span><span>Cerrado</span></li>
-          </ul></dd></div>
-          <div><dt>Dónde</dt><dd>Rúa Pedroso, 33<br>36618 Vilagarcía de Arousa<br>Pontevedra</dd></div>
+          <div><dt>Horario</dt><dd><div class="week" data-hours>
+            <p class="week-status" aria-live="polite">Horario de la semana</p>
+            <ol class="week-days">
+              <li data-day="1" aria-label="Lunes: 10:00 a 16:00"><b>L</b><span>10-16</span></li>
+              <li data-day="2" class="closed" aria-label="Martes: cerrado"><b>M</b><span>Cerrado</span></li>
+              <li data-day="3" aria-label="Miércoles: 10:00 a 16:00"><b>X</b><span>10-16</span></li>
+              <li data-day="4" aria-label="Jueves: 10:00 a 16:00"><b>J</b><span>10-16</span></li>
+              <li data-day="5" aria-label="Viernes: 10:00 a 16:00 y 20:00 a 00:00"><b>V</b><span>10-16<br>20-24</span></li>
+              <li data-day="6" aria-label="Sábado: 12:00 a 16:00 y 20:00 a 01:00"><b>S</b><span>12-16<br>20-01</span></li>
+              <li data-day="0" aria-label="Domingo: 12:00 a 16:00 y 20:00 a 00:00"><b>D</b><span>12-16<br>20-24</span></li>
+            </ol>
+          </div></dd></div>
+          <div><dt>Dónde</dt><dd>Rúa Pedroso, 33, Vilagarcía de Arousa<br><a class="link-arrow" href="https://www.google.com/maps/dir/?api=1&amp;destination=Taberna+A+Caixa,+R%C3%BAa+Pedroso+33,+36618+Vilagarc%C3%ADa+de+Arousa" target="_blank" rel="noopener">Cómo llegar</a></dd></div>
           <div><dt>Teléfono y WhatsApp</dt><dd><a href="tel:+34627855430">627 85 54 30</a></dd></div>
         </dl>
         <a class="btn btn-primary" href="tel:+34627855430">Reservar mesa</a>

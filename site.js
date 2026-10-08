@@ -89,6 +89,79 @@
     groups.forEach((g) => activeObserver.observe(g));
   }
 
+  // ---------- Horario: día de hoy y "abierto ahora" (hora de España) ----------
+  // Minutos desde las 00:00; un cierre por encima de 1440 termina al día siguiente.
+  const SCHEDULE = {
+    0: [[720, 960], [1200, 1440]], // domingo
+    1: [[600, 960]],
+    2: [], // martes cerrado
+    3: [[600, 960]],
+    4: [[600, 960]],
+    5: [[600, 960], [1200, 1440]],
+    6: [[720, 960], [1200, 1500]], // sábado hasta la 01:00
+  };
+  const DAY_NAMES = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+  const hhmm = (m) => `${String(Math.floor(m / 60) % 24).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+
+  function madridNow() {
+    const parts = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/Madrid", weekday: "short", hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    }).formatToParts(new Date());
+    const get = (t) => parts.find((p) => p.type === t).value;
+    const day = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].indexOf(get("weekday"));
+    return { day, min: Number(get("hour")) * 60 + Number(get("minute")) };
+  }
+
+  function openState({ day, min }) {
+    const yesterday = (day + 6) % 7;
+    for (const [s, e] of SCHEDULE[yesterday]) if (e > 1440 && min < e - 1440) return { open: true, until: e };
+    for (const [s, e] of SCHEDULE[day]) if (min >= s && min < e) return { open: true, until: e };
+    for (let ahead = 0; ahead < 7; ahead++) {
+      const d = (day + ahead) % 7;
+      const next = SCHEDULE[d].find(([s]) => ahead > 0 || s > min);
+      if (next) return { open: false, day: d, ahead, at: next[0] };
+    }
+    return { open: false };
+  }
+
+  const weeks = document.querySelectorAll("[data-hours]");
+  if (weeks.length) {
+    const now = madridNow();
+    const st = openState(now);
+    let text = "";
+    if (st.open) text = `Abierto ahora. Cierra a las ${hhmm(st.until)}`;
+    else if (st.ahead === 0) text = `Cerrado ahora. Abre hoy a las ${hhmm(st.at)}`;
+    else if (st.ahead === 1) text = `Cerrado ahora. Abre mañana a las ${hhmm(st.at)}`;
+    else if (st.day != null) text = `Cerrado ahora. Abre el ${DAY_NAMES[st.day]} a las ${hhmm(st.at)}`;
+    weeks.forEach((w) => {
+      const status = w.querySelector(".week-status");
+      if (text) {
+        status.textContent = text;
+        status.classList.add(st.open ? "is-open" : "is-closed");
+      }
+      const today = w.querySelector(`[data-day="${now.day}"]`);
+      if (today) {
+        today.classList.add("today");
+        today.setAttribute("aria-current", "date");
+      }
+    });
+  }
+
+  // ---------- Mapa: se carga Google Maps solo al pulsar (más rápido y sin cookies antes) ----------
+  document.querySelectorAll("[data-load-map]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const map = btn.closest(".map");
+      const iframe = document.createElement("iframe");
+      iframe.title = "Mapa de Google: Taberna A Caixa, Rúa Pedroso 33, Vilagarcía de Arousa";
+      iframe.src = map.dataset.mapSrc;
+      iframe.loading = "lazy";
+      iframe.referrerPolicy = "no-referrer-when-downgrade";
+      iframe.allowFullscreen = true;
+      map.appendChild(iframe);
+      map.classList.add("is-live");
+    })
+  );
+
   // ---------- Apariciones suaves al bajar (páginas interiores) ----------
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {

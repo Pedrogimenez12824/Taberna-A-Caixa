@@ -50,25 +50,42 @@
     </section>
 
     <section class="location">
-      <div class="map reveal">
-        <iframe title="Mapa: Taberna A Caixa en Rúa Pedroso, 33, Vilagarcía de Arousa" src="https://www.google.com/maps?q=Taberna+A+Caixa,+R%C3%BAa+Pedroso+33,+36618+Vilagarc%C3%ADa+de+Arousa&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="location-hours reveal" id="reservar">
+        <h2>Horario</h2>
+        <div class="week" data-hours>
+            <p class="week-status" aria-live="polite">Horario de la semana</p>
+            <ol class="week-days">
+              <li data-day="1" aria-label="Lunes: 10:00 a 16:00"><b>L</b><span>10-16</span></li>
+              <li data-day="2" class="closed" aria-label="Martes: cerrado"><b>M</b><span>Cerrado</span></li>
+              <li data-day="3" aria-label="Miércoles: 10:00 a 16:00"><b>X</b><span>10-16</span></li>
+              <li data-day="4" aria-label="Jueves: 10:00 a 16:00"><b>J</b><span>10-16</span></li>
+              <li data-day="5" aria-label="Viernes: 10:00 a 16:00 y 20:00 a 00:00"><b>V</b><span>10-16<br>20-24</span></li>
+              <li data-day="6" aria-label="Sábado: 12:00 a 16:00 y 20:00 a 01:00"><b>S</b><span>12-16<br>20-01</span></li>
+              <li data-day="0" aria-label="Domingo: 12:00 a 16:00 y 20:00 a 00:00"><b>D</b><span>12-16<br>20-24</span></li>
+            </ol>
+          </div>
+        <div class="location-contact">
+          <p>Reservas por teléfono o WhatsApp: <a href="tel:+34627855430">627 85 54 30</a></p>
+          <div class="page-head-ctas">
+            <a class="btn btn-primary" href="tel:+34627855430">Llamar</a>
+            <a class="btn btn-ghost" href="https://wa.me/34627855430" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
       </div>
-      <div class="location-info" id="reservar">
-        <dl class="visit-data">
-          <div class="reveal"><dt>Dirección</dt><dd>Rúa Pedroso, 33<br>36618 Vilagarcía de Arousa<br>Pontevedra</dd></div>
-          <div class="reveal"><dt>Horario</dt><dd><ul class="hours">
-            <li><span>Lunes, miércoles y jueves</span><span>10:00 a 16:00</span></li>
-            <li><span>Viernes</span><span>10:00 a 16:00 y 20:00 a 00:00</span></li>
-            <li><span>Sábado</span><span>12:00 a 16:00 y 20:00 a 01:00</span></li>
-            <li><span>Domingo</span><span>12:00 a 16:00 y 20:00 a 00:00</span></li>
-            <li><span>Martes</span><span>Cerrado</span></li>
-          </ul></dd></div>
-          <div class="reveal"><dt>Reservas</dt><dd><a href="tel:+34627855430">627 85 54 30</a> (teléfono y WhatsApp)</dd></div>
-        </dl>
-        <div class="page-head-ctas reveal">
-          <a class="btn btn-primary" href="tel:+34627855430">Llamar para reservar</a>
-          <a class="btn btn-ghost" href="https://wa.me/34627855430" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Taberna+A+Caixa,+R%C3%BAa+Pedroso+33,+36618+Vilagarc%C3%ADa+de+Arousa" target="_blank" rel="noopener">Cómo llegar</a>
+
+      <div class="location-map reveal">
+        <h2>Cómo llegar</h2>
+        <div class="map" data-map-src="https://www.google.com/maps?q=Taberna+A+Caixa,+R%C3%BAa+Pedroso+33,+36618+Vilagarc%C3%ADa+de+Arousa&amp;output=embed">
+          <img class="map-photo" src="assets/img/terraza.jpg" alt="" width="552" height="690" loading="lazy">
+          <div class="map-facade">
+            <span class="map-pin" aria-hidden="true"><img src="assets/img/logo.png" alt="" width="64" height="64"></span>
+            <p class="map-address">Rúa Pedroso, 33<br>36618 Vilagarcía de Arousa</p>
+            <button class="btn btn-paper btn-sm" type="button" data-load-map>Ver mapa de Google</button>
+          </div>
+        </div>
+        <div class="map-actions">
+          <p>Rúa Pedroso, 33, 36618 Vilagarcía de Arousa, Pontevedra</p>
+          <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Taberna+A+Caixa,+R%C3%BAa+Pedroso+33,+36618+Vilagarc%C3%ADa+de+Arousa" target="_blank" rel="noopener">Abrir ruta en Google Maps</a>
         </div>
       </div>
     </section>
