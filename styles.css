@@ -478,3 +478,38 @@ button.btn { background-color: transparent; font-family: var(--font-body); curso
   .week-days li { font-size: .85rem; }
 }
 a[href^="tel"] { white-space: nowrap; }
+
+/* Horas con minutos: inicio arriba, cierre debajo; dos turnos separados por una línea */
+.week-days li > span { display: grid; gap: .3rem; }
+.week-days .t { display: grid; line-height: 1.2; }
+.week-days .t i { font-style: normal; opacity: .72; }
+.week-days .t + .t { padding-top: .3rem; border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent); }
+.week-days li { padding-inline: .15rem; }
+
+/* Abierto / cerrado ahora: un poco más visible */
+.week-status { padding: .45rem .8rem .45rem .7rem; border-radius: 12px; font-size: 1rem; line-height: 1.35; }
+.week-status.is-open { background: rgb(63 143 90 / .14); color: #2f6e44; }
+.week-status.is-closed { background: rgb(179 53 43 / .12); color: #9c2b22; }
+.location .week-status.is-open { color: #7fc796; background: rgb(63 143 90 / .2); }
+.location .week-status.is-closed { color: #f08a7f; background: rgb(179 53 43 / .2); }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .location .week-status.is-open { color: #2f6e44; background: rgb(63 143 90 / .14); }
+  :root:not([data-theme="dark"]) .location .week-status.is-closed { color: #9c2b22; background: rgb(179 53 43 / .12); }
+}
+:root[data-theme="light"] .location .week-status.is-open { color: #2f6e44; background: rgb(63 143 90 / .14); }
+:root[data-theme="light"] .location .week-status.is-closed { color: #9c2b22; background: rgb(179 53 43 / .12); }
+
+/* Ubicación: ritmo vertical más ordenado */
+.page-ubicacion .page-head { padding-bottom: clamp(2rem, 5vh, 3.5rem); }
+.location { gap: clamp(2.5rem, 6vw, 5.5rem); align-items: start; }
+.location-hours, .location-map { display: grid; gap: 1.4rem; align-content: start; }
+.location h2 { margin: 0; }
+.location .week { margin-top: 0; gap: 1rem; }
+.location-contact { display: grid; gap: 1rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
+.location-contact p { margin: 0; }
+.map-actions { margin-top: 0; padding-top: .2rem; }
+.map-actions p { font-size: .95rem; max-width: 30ch; }
+@media (max-width: 860px) {
+  .location { gap: 3.5rem; }
+  .map-actions { flex-direction: column; align-items: flex-start; }
+}
