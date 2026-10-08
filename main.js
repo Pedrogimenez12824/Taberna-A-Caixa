@@ -24,17 +24,28 @@ if (reduceMotion || !window.gsap || !window.ScrollTrigger) {
   const hero = document.querySelector(".hero");
   const safe = document.querySelector(".safe");
   // Centro de la puerta dentro del dibujo (viewBox 360x420)
-  const DOOR = { cx: 216 / 360, cy: 211 / 420, w: 232 / 360, h: 334 / 420 };
+  const DOOR = { left: 100 / 360, top: 44 / 420, w: 232 / 360, h: 334 / 420 };
+  // Punto de la foto donde termina la cámara: en pantallas anchas, el letrero
+  // "Taberna A Caixa" de la fachada; en vertical, el centro de la foto.
+  const focus = () => (innerHeight > innerWidth ? { x: 0.45, y: 0.5 } : { x: 0.46, y: 0.38 });
+  const focusX = () => DOOR.left + DOOR.w * focus().x;
+  const focusY = () => DOOR.top + DOOR.h * focus().y;
 
   const zoom = () => {
     const sw = safe.offsetWidth;
     const sh = safe.offsetHeight;
-    return Math.max(innerWidth / (sw * DOOR.w), innerHeight / (sh * DOOR.h)) * 1.08;
+    const f = focus();
+    // la puerta tiene que cubrir la pantalla por los cuatro lados del punto de enfoque
+    const spanX = sw * DOOR.w * Math.min(f.x, 1 - f.x) * 2;
+    const spanY = sh * DOOR.h * Math.min(f.y, 1 - f.y) * 2;
+    return Math.max(innerWidth / spanX, innerHeight / spanY) * 1.04;
   };
-  const shiftX = () => innerWidth / 2 - (safe.offsetLeft + safe.offsetWidth * DOOR.cx);
-  const shiftY = () => innerHeight / 2 - (safe.offsetTop + safe.offsetHeight * DOOR.cy);
+  const shiftX = () => innerWidth / 2 - (safe.offsetLeft + safe.offsetWidth * focusX());
+  const shiftY = () => innerHeight / 2 - (safe.offsetTop + safe.offsetHeight * focusY());
 
-  gsap.set(safe, { transformOrigin: `${DOOR.cx * 100}% ${DOOR.cy * 100}%` });
+  const setOrigin = () => gsap.set(safe, { transformOrigin: `${focusX() * 100}% ${focusY() * 100}%` });
+  setOrigin();
+  ScrollTrigger.addEventListener("refreshInit", setOrigin);
 
   const tl = gsap.timeline({
     defaults: { ease: "none" },
@@ -53,7 +64,8 @@ if (reduceMotion || !window.gsap || !window.ScrollTrigger) {
     .to(".hero-copy", { opacity: 0, y: -40, duration: 0.7 }, 1.1)
     .to(".door", { opacity: 0, duration: 0.4 }, 2.0)
     .to(safe, { x: shiftX, y: shiftY, scale: zoom, duration: 1.3, ease: "power2.in" }, 1.9)
-    .to(".hero-end", { opacity: 1, duration: 0.4 }, 3.0)
+    .to(".hero-photo", { opacity: 1, duration: 0.2 }, 3.0)
+    .to(".hero-end", { opacity: 1, duration: 0.3 }, 3.1)
     .to({}, { duration: 0.3 });
 
   // 2. MANIFIESTO: las palabras se encienden mientras lees
