@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Taberna A Caixa</title>
-  <meta name="description" content="Taberna A Caixa: cocina casera para compartir, terraza de piedra y sobremesas largas.">
+  <title>Carta de A Caixa</title>
+  <meta name="description" content="La carta de Taberna A Caixa: ensaladas, raciones para compartir, tortillas, pescado, carnes y postres caseros.">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Black&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page">
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
@@ -28,8 +28,8 @@
   <div class="drawer" id="drawer" aria-hidden="true" inert>
     <nav class="drawer-nav" aria-label="Páginas">
       <ul>
-        <li><a href="index.html" aria-current="page">Inicio</a></li>
-        <li><a href="carta.html">Carta</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="carta.html" aria-current="page">Carta</a></li>
         <li><a href="quienes-somos.html">Quiénes somos</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="opiniones.html">Opiniones</a></li>
@@ -43,82 +43,14 @@
     </div>
   </div>
 
-  <main id="top">
-    <!-- HERO: la caja fuerte se abre con el scroll -->
-    <section class="hero" aria-label="Portada">
-      <div class="hero-copy">
-        <h1>Taberna<br>A Caixa</h1>
-        <p>Cocina casera para compartir, terraza de piedra y sobremesas largas.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="ubicacion.html#reservar">Reservar mesa</a>
-          <a class="btn btn-ghost" href="carta.html">Ver la carta</a>
-        </div>
-      </div>
-
-      <div class="safe" aria-hidden="true">
-        <svg class="safe-body" viewBox="0 0 360 420">
-          <path class="face side" d="M12 62 L82 24 L82 398 L12 368 Z"/>
-          <path class="face top" d="M12 62 L82 24 L350 30 L282 66 Z" />
-          <rect class="face front" x="82" y="24" width="268" height="374"/>
-          <path class="line" d="M12 62 L82 24 L350 30 M82 24 V398 M12 62 V368 L82 398 H350 V30"/>
-        </svg>
-        <div class="vault">
-          <img src="assets/img/comedor.jpg" alt="">
-        </div>
-        <div class="door">
-          <div class="door-front">
-            <span class="stamp">'A Caixa'</span>
-            <svg class="wheel" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="30"/>
-              <g class="spokes-out">
-                <path d="M50 4 V39 M50 61 V96"/>
-                <path d="M10.2 27 L40.5 44.5 M59.5 55.5 L89.8 73"/>
-                <path d="M10.2 73 L40.5 55.5 M59.5 44.5 L89.8 27"/>
-              </g>
-              <g class="spokes-in">
-                <path d="M50 4 V39 M50 61 V96"/>
-                <path d="M10.2 27 L40.5 44.5 M59.5 55.5 L89.8 73"/>
-                <path d="M10.2 73 L40.5 55.5 M59.5 44.5 L89.8 27"/>
-              </g>
-              <circle class="hub" cx="50" cy="50" r="11"/>
-            </svg>
-            <svg class="dial" viewBox="0 0 40 40">
-              <circle cx="20" cy="20" r="17"/>
-              <circle cx="20" cy="20" r="11"/>
-              <circle cx="20" cy="20" r="4"/>
-              <path d="M20 3 V8 M37 20 H32 M20 37 V32 M3 20 H8"/>
-            </svg>
-          </div>
-          <div class="door-back"></div>
-        </div>
-      </div>
-
-      <p class="hero-end">Pasa, está abierta.</p>
+  <main>
+    <section class="page-head">
+      <h1 class="reveal">La carta</h1>
+      <p class="reveal">Cocina casera de raciones para compartir. Los precios incluyen IVA.</p>
+      <div class="page-head-ctas reveal"><button class="btn btn-ghost carta-open" type="button" data-open-carta>Ver la carta original</button></div>
     </section>
 
-    <!-- MANIFIESTO: las palabras se encienden al hacer scroll -->
-    <section class="manifesto" aria-label="Quiénes somos">
-      <p class="reveal-words">Una casa de piedra con terraza, una barra de las de siempre y una cocina que no tiene prisa. Aquí se viene a compartir platos, a pedir otra ronda y a quedarse un rato más.</p>
-    </section>
-
-    <!-- RINCONES: galería horizontal -->
-    <section class="rooms" id="rincones" aria-label="Rincones">
-      <div class="rooms-track">
-        <div class="rooms-intro">
-          <h2>Cada rincón,<br>su mesa.</h2>
-          <p>Elige dónde sentarte: al sol, junto a la ventana o en el sofá del fondo.</p>
-        </div>
-        <figure class="frame"><img src="assets/img/terraza.jpg" alt="Fachada de piedra de la taberna con la terraza y sombrillas" width="552" height="690" loading="lazy"><figcaption>La terraza</figcaption></figure>
-        <figure class="frame"><img src="assets/img/comedor.jpg" alt="Comedor con barra de madera, reloj de pared y mesas" width="831" height="624" loading="lazy"><figcaption>El comedor</figcaption></figure>
-        <figure class="frame"><img src="assets/img/ventana.jpg" alt="Mesa de azulejo junto a una ventana con cortinas" width="552" height="552" loading="lazy"><figcaption>Junto a la ventana</figcaption></figure>
-        <figure class="frame"><img src="assets/img/cojines.jpg" alt="Banco corrido con cojines y lámpara de mimbre" width="498" height="624" loading="lazy"><figcaption>El banco de los cojines</figcaption></figure>
-        <figure class="frame"><img src="assets/img/rincon.jpg" alt="Rincón con sillones blancos y plantas colgantes" width="552" height="552" loading="lazy"><figcaption>El rincón verde</figcaption></figure>
-        <figure class="frame"><img src="assets/img/bici.jpg" alt="Bicicleta decorativa con el cartel A Caixa y una lámpara" width="552" height="921" loading="lazy"><figcaption>La bici de la entrada</figcaption></figure>
-      </div>
-    </section>
-
-    <!-- CARTA: título fijo a la izquierda, platos a la derecha -->
-    <section class="menu" id="carta" aria-label="Carta">
+    <section class="menu" aria-label="Carta">
       <div class="menu-side">
         <h2>La carta</h2>
         <p class="menu-current" aria-live="polite"><span>Ensaladas</span></p>
@@ -130,11 +62,9 @@
           <li><a href="#m-carnes">Carnes</a></li>
           <li><a href="#m-postres">Postres</a></li>
         </ol>
-        <button class="btn btn-ghost carta-open" type="button" data-open-carta>Ver la carta original</button>
       </div>
 
       <div class="menu-list">
-        <button class="btn btn-ghost carta-open carta-open--mobile" type="button" data-open-carta>Ver la carta original</button>
         <article class="menu-group" id="m-ensaladas" data-title="Ensaladas">
           <h3>Ensaladas</h3>
           <ul>
@@ -213,19 +143,6 @@
       </div>
     </section>
 
-    <!-- VISÍTANOS -->
-    <section class="visit" id="visitanos" aria-label="Visítanos">
-      <div class="visit-bg" aria-hidden="true"><img src="assets/img/terraza.jpg" alt=""></div>
-      <div class="visit-card">
-        <h2>Te guardamos mesa.</h2>
-        <dl class="visit-data">
-          <div><dt>Horario</dt><dd>Martes a domingo<br>13:00 a 16:00 y 20:00 a 00:00<br>Lunes cerrado</dd></div>
-          <div><dt>Dónde</dt><dd>Rúa da Pedra, 12<br>Galicia</dd></div>
-          <div><dt>Teléfono</dt><dd><a href="tel:+34986000000">986 000 000</a></dd></div>
-        </dl>
-        <a class="btn btn-primary" href="tel:+34986000000">Reservar mesa</a>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
@@ -249,9 +166,6 @@
     <img src="assets/img/carta.jpg" alt="Foto de la carta impresa de A Caixa con todos los platos y precios" width="1206" height="1961" loading="lazy">
   </dialog>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="site.js"></script>
-  <script src="main.js"></script>
 </body>
 </html>
