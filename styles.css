@@ -417,8 +417,8 @@ button.btn { background-color: transparent; font-family: var(--font-body); curso
 .btn.btn-paper:hover { background: #f0e6cc; }
 
 /* Horario */
-.hours { list-style: none; margin: .3rem 0 0; padding: 0; display: grid; gap: .35rem; font-variant-numeric: tabular-nums; }
-.hours li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
+.hours { list-style: none; margin: .3rem 0 0; padding: 0; display: grid; gap: .6rem; font-variant-numeric: tabular-nums; }
+.hours li { display: grid; gap: .1rem; }
 .hours li span:first-child { font-weight: 600; }
 .location .hours li span:first-child { color: var(--muted); font-weight: 500; }
 .visit-card .hours { font-size: .95rem; }
