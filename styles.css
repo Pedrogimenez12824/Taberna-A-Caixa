@@ -409,3 +409,21 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 400; letter-spacing:
   .js .reveal, .drawer, .drawer-nav a, .drawer-info { transition: none; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Los <button> traen fondo blanco del navegador: se lo quitamos a todos los .btn */
+button.btn { background-color: transparent; font-family: var(--font-body); cursor: pointer; }
+/* "Ver carta": botón de papel crema, legible en modo claro y oscuro */
+.btn.btn-paper { background: var(--cream); color: var(--ink-line); border-color: var(--ink-line); }
+.btn.btn-paper:hover { background: #f0e6cc; }
+
+/* Horario */
+.hours { list-style: none; margin: .3rem 0 0; padding: 0; display: grid; gap: .35rem; font-variant-numeric: tabular-nums; }
+.hours li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1rem; }
+.hours li span:first-child { font-weight: 600; }
+.location .hours li span:first-child { color: var(--muted); font-weight: 500; }
+.visit-card .hours { font-size: .95rem; }
+.visit-card .visit-data { gap: .9rem; }
+
+/* Mapa de Google */
+.map iframe { display: block; }
+.drawer-info a { color: inherit; }

@@ -38,8 +38,8 @@
     </nav>
     <div class="drawer-info">
       <img src="assets/img/logo.png" alt="" width="120" height="120">
-      <p><span>Horario</span>Martes a domingo<br>13:00 a 16:00 y 20:00 a 00:00</p>
-      <p><span>Reservas</span>986 000 000</p>
+      <p><span>Dónde</span>Rúa Pedroso, 33<br>Vilagarcía de Arousa</p>
+      <p><span>Reservas</span><a href="tel:+34627855430">627 85 54 30</a></p>
     </div>
   </div>
 
@@ -130,11 +130,11 @@
           <li><a href="#m-carnes">Carnes</a></li>
           <li><a href="#m-postres">Postres</a></li>
         </ol>
-        <button class="btn btn-ghost carta-open" type="button" data-open-carta>Ver la carta original</button>
+        <button class="btn btn-paper carta-open" type="button" data-open-carta>Ver carta</button>
       </div>
 
       <div class="menu-list">
-        <button class="btn btn-ghost carta-open carta-open--mobile" type="button" data-open-carta>Ver la carta original</button>
+        <button class="btn btn-paper carta-open carta-open--mobile" type="button" data-open-carta>Ver carta</button>
         <article class="menu-group" id="m-ensaladas" data-title="Ensaladas">
           <h3>Ensaladas</h3>
           <ul>
@@ -219,11 +219,19 @@
       <div class="visit-card">
         <h2>Te guardamos mesa.</h2>
         <dl class="visit-data">
-          <div><dt>Horario</dt><dd>Martes a domingo<br>13:00 a 16:00 y 20:00 a 00:00<br>Lunes cerrado</dd></div>
-          <div><dt>Dónde</dt><dd>Rúa da Pedra, 12<br>Galicia</dd></div>
-          <div><dt>Teléfono</dt><dd><a href="tel:+34986000000">986 000 000</a></dd></div>
+          <div><dt>Horario</dt><dd><ul class="hours">
+            <li><span>Lunes</span><span>10:00 a 16:00</span></li>
+            <li><span>Martes</span><span>Cerrado</span></li>
+            <li><span>Miércoles</span><span>10:00 a 16:00</span></li>
+            <li><span>Jueves</span><span>10:00 a 16:00</span></li>
+            <li><span>Viernes</span><span>10:00 a 16:00<br>20:00 a 00:00</span></li>
+            <li><span>Sábado</span><span>12:00 a 16:00<br>20:00 a 01:00</span></li>
+            <li><span>Domingo</span><span>12:00 a 16:00<br>20:00 a 00:00</span></li>
+          </ul></dd></div>
+          <div><dt>Dónde</dt><dd>Rúa Pedroso, 33<br>36618 Vilagarcía de Arousa<br>Pontevedra</dd></div>
+          <div><dt>Teléfono y WhatsApp</dt><dd><a href="tel:+34627855430">627 85 54 30</a></dd></div>
         </dl>
-        <a class="btn btn-primary" href="tel:+34986000000">Reservar mesa</a>
+        <a class="btn btn-primary" href="tel:+34627855430">Reservar mesa</a>
       </div>
     </section>
   </main>
@@ -238,12 +246,12 @@
       <li><a href="opiniones.html">Opiniones</a></li>
       <li><a href="ubicacion.html">Ubicación</a></li>
     </ul>
-    <p class="footer-note">Web de prueba. Dirección, teléfono, horario y opiniones son de ejemplo.</p>
+    <p class="footer-note">Web de prueba. Las opiniones son de ejemplo.</p>
   </footer>
 
-  <dialog class="carta-dialog" id="carta-original" aria-label="Carta original">
+  <dialog class="carta-dialog" id="carta-original" aria-label="Carta">
     <div class="carta-dialog-bar">
-      <p>Carta original</p>
+      <p>Carta de A Caixa</p>
       <button class="btn btn-ghost btn-sm" type="button" data-close-carta>Cerrar</button>
     </div>
     <img src="assets/img/carta.jpg" alt="Foto de la carta impresa de A Caixa con todos los platos y precios" width="1206" height="1961" loading="lazy">
